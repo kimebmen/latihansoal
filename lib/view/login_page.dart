@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test1/view/register_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,11 +22,12 @@ class LoginPage extends StatelessWidget {
               ),
               Text(
                   "Selamat Datang di Aplikasi Widya Edu Aplikasi Latihan dan Konsultasi Soal"),
+              Spacer(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    elevation: 5,
+                    elevation: 0,
                     primary: Colors.white,
                     fixedSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
@@ -38,8 +40,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => const RegisterPage()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const RegisterPage()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +57,43 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    primary: Colors.black,
+                    fixedSize: const Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                      side: const BorderSide(
+                        color: Colors.blue,
+                        style: BorderStyle.solid,
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const RegisterPage()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/auth/ic_apple.png"),
+                      const SizedBox(width: 10),
+                      const Text(
+                        "Masuk dengan Apple",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
