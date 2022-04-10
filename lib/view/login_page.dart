@@ -39,48 +39,48 @@ class LoginPage extends StatelessWidget {
                 R.strings.loginDescription,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: R.colors.greySubtitle,),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: R.colors.greySubtitle,
+                ),
               ),
               Spacer(),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 12.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    primary: Colors.white,
-                    fixedSize:
-                        Size(MediaQuery.of(context).size.width * 0.8, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      side: BorderSide(
-                        color: R.colors.primary,
-                        style: BorderStyle.solid,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const RegisterPage()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(R.assets.icGoogle),
-                      const SizedBox(width: 15),
-                      Text(
-                        R.strings.loginWithGoogle,
-                        style: TextStyle(
+              ButtonLogin(
+                backgroundColor: Colors.white,
+                borderColor: R.colors.primary,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(R.assets.icGoogle),
+                    const SizedBox(width: 15),
+                    Text(
+                      R.strings.loginWithGoogle,
+                      style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
                         color: R.colors.blackLogin,
-                        ),
-                        ),
-                    ],
-                  ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ButtonLogin(
+                backgroundColor: Colors.black,
+                borderColor: Colors.black,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(R.assets.icApple),
+                    const SizedBox(width: 15),
+                    Text(
+                      R.strings.loginWithApple,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 10),
@@ -88,6 +88,45 @@ class LoginPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ButtonLogin extends StatelessWidget {
+  const ButtonLogin({
+    Key? key,
+    required this.backgroundColor,
+    required this.child,
+    required this.borderColor,
+  }) : super(key: key);
+
+  final Color backgroundColor;
+  final Widget child;
+  final Color borderColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            primary: backgroundColor,
+            fixedSize: Size(MediaQuery.of(context).size.width * 0.8, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+              side: BorderSide(
+                color: borderColor,
+                style: BorderStyle.solid,
+                width: 1,
+              ),
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const RegisterPage()));
+          },
+          child: child),
     );
   }
 }
