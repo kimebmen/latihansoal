@@ -1,27 +1,29 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:test1/constant/r.dart';
 import 'package:test1/view/login_page.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
+  static const String route = "splash_screen";
 
   @override
   Widget build(BuildContext context) {
+    
+    Timer(const Duration(seconds: 5), () {
+      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.of(context).pushNamed(LoginPage.route);
+    });
+
     return Scaffold(
-      // appBar: AppBar(),
-      body: GestureDetector(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context){
-            return LoginPage();
-          }));
-        },
-        child: Center(
-          child: Image.asset(
-            "assets/auth/ic_splash.png",
-            width: MediaQuery.of(context).size.width * 0.5,
-          ),
+      backgroundColor: R.colors.primary,
+      body: Center(
+        child: Image.asset(
+          R.assets.icSplash,
+          width: MediaQuery.of(context).size.width * 0.5,
         ),
       ),
-      backgroundColor: Color(0xff3A7FD5),
     );
   }
 }

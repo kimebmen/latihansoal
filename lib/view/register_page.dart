@@ -3,6 +3,8 @@ import 'package:test1/constant/r.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
+  static String route = "register_page";
+
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

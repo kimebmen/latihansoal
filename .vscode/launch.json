@@ -8,7 +8,9 @@
         {
             "name": "test1",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "deviceId": "chrome"
+            // "deviceId": "4c027c"
         },
         {
             "name": "test1 (profile mode)",
