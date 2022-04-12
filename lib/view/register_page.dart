@@ -5,7 +5,6 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
   static String route = "register_page";
 
-
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -32,9 +31,14 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
+        elevation: 0,
         title: Text(
           "Yuk isi data diri",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -42,41 +46,16 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: const EdgeInsets.all(20.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Text(
-              "Nama Lengkap",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+            RegisterTextField(
+              title: 'Email',
+              hintText: 'Email Anda',
             ),
-            SizedBox(height: 5),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white,
-                border: Border.all(
-                  color: const Color(0xFFD6D6D6),
-                ),
-              ),
-              height: 50,
-              child: const TextField(
-                // controller: nameController,
-                // enabled: false,
-                decoration: InputDecoration(
-                  disabledBorder: InputBorder.none,
-                  border: InputBorder.none,
-                  hintText: "Nama Lengkap",
-                  hintStyle: TextStyle(
-                    color: Color(0XFFAAAAAA),
-                  ),
-                ),
-              ),
+            
+            RegisterTextField(
+              title: 'Nama Lengkap',
+              hintText: 'contoh : Kimebmen Simbolon',
             ),
-            SizedBox(height: 10),
-
+            
             //JK
             Text(
               "Jenis Kelamin",
@@ -157,8 +136,13 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
 
-            // Kelas
             SizedBox(height: 10),
+            RegisterTextField(
+              title: 'Nama Sekolah',
+              hintText: 'Nama Sekolah',
+            ),
+
+            // Kelas
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -194,18 +178,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                       items: classSlta
-                      .map((e) => DropdownMenuItem(
-                          child: Text(e),
-                          value: e,
-                        ))
-                      .toList(),
+                          .map((e) => DropdownMenuItem(
+                                child: Text(e),
+                                value: e,
+                              ))
+                          .toList(),
                       value: kelas,
                       onChanged: (String? val) {
                         kelas = val;
                         setState(() {});
                         // validation();
                       },
-
                     ),
                   ),
                 ),
@@ -253,6 +236,59 @@ class _RegisterPageState extends State<RegisterPage> {
           ]),
         ),
       ),
+    );
+  }
+}
+
+class RegisterTextField extends StatelessWidget {
+  const RegisterTextField({
+    Key? key,
+    required this.title,
+    required this.hintText,
+  }) : super(key: key);
+  final String title;
+  final String hintText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 5),
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 14,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: Colors.white,
+            border: Border.all(
+              color: R.colors.greyBorder,
+            ),
+          ),
+          height: 50,
+          child: TextField(
+            // controller: nameController,
+            // enabled: false,
+            decoration: InputDecoration(
+              disabledBorder: InputBorder.none,
+              border: InputBorder.none,
+              hintText: hintText,
+              hintStyle: TextStyle(
+                color: R.colors.greyHintText,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+      ],
     );
   }
 }

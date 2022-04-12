@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:test1/view/backup/register_page_scrolview.dart';
 import 'package:test1/view/login_page.dart';
 import 'package:test1/view/register_page.dart';
 import 'package:test1/view/splash_screen.dart';
@@ -34,7 +33,9 @@ class MyApp extends StatelessWidget {
       // initialRoute: "splash_screen",
       routes: {
         "/": (context) => const SplashScreen(),
-        LoginPage.route:(context) => const LoginPage(),
+        LoginPage.route: (context) => const LoginPage(),
+        RegisterPage.route: (context) => const RegisterPage(),
+
         // RegisterPage.route:(context) => const RegisterPage(),
         // "/login":(context) => const LoginPage(),
         // "login_screen":(context) => const LoginPage(),
