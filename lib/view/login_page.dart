@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
   static String route = "login_page";
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState(); // ?
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -20,20 +20,36 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    //TODO add testStyle
-                    const Text("Login"),
-                    Image.asset("assets/auth/img_login.png"),
-                    const Text("Selamat Datang"),
-                    const Text(
-                      "Selamat Datang di Aplikasi Widya Edu Aplikasi Latihan dan Konsultasi Soal",
-                    ),
-                  ],
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  R.strings.login,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-              // Spacer(),
+              SizedBox(height: 20),
+              Image.asset(R.assets.imgLogin),
+              SizedBox(height: 35),
+              Text(
+                R.strings.welcome,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                R.strings.loginDescription,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: R.colors.greySubtitle,
+                ),
+              ),
+              Spacer(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ElevatedButton(
@@ -100,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              SizedBox(height: 10),
             ],
           ),
         ),
