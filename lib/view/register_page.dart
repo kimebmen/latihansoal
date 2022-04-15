@@ -14,13 +14,14 @@ class RegisterPage extends StatefulWidget {
 enum Gender { lakiLaki, perempuan }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController controller = TextEditingController();
   List<String> classSlta = [
     "10", "11", "12",
     // "Gap Year", "Umum"
   ];
   String? selectedClass = "10";
   String? gender = "";
+  final emailController = TextEditingController();
 
   onTapGender(Gender genderInput) {
     if (genderInput == Gender.lakiLaki) {
@@ -36,10 +37,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Yuk isi data diri",
           style: TextStyle(
             color: Colors.black,
@@ -48,27 +49,44 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       ),
-      bottomNavigationBar: 
-      SafeArea(
+      bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 40.0),
-          child: ButtonLogin(
-            onTap: () {
-              Navigator.of(context).pushNamed(MainPage.route);
-            },
-            backgroundColor: R.colors.primary,
-            borderColor: R.colors.primary,
-            child: Text(
-              R.strings.daftar,
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+          padding: EdgeInsets.only(bottom: 36),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                primary: Colors.blue,
+                fixedSize: Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    side: BorderSide(color: R.colors.primary)),
+              ),
+              onPressed: () {
+                print(emailController.text);
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => MainPage(),
+                //   ),
+                // );
+                // Navigator.of(context).pushNamed(MainPage.route);
+                Navigator.of(context).pushNamedAndRemoveUntil(MainPage.route, (context)=>false);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "DAFTAR",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
               ),
             ),
           ),
         ),
       ),
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -76,6 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RegisterTextField(
+                controller: emailController,
                 title: 'Email',
                 hintText: 'Email Anda',
               ),
@@ -227,6 +246,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: 'Nama Sekolah',
               ),
               // Spacer(),
+              // SizedBox(height: 10),
             ],
           ),
         ),
@@ -240,9 +260,11 @@ class RegisterTextField extends StatelessWidget {
     Key? key,
     required this.title,
     required this.hintText,
+    this.controller,
   }) : super(key: key);
   final String title;
   final String hintText;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -270,7 +292,7 @@ class RegisterTextField extends StatelessWidget {
           ),
           height: 50,
           child: TextField(
-            // controller: nameController,
+            controller: controller,
             // enabled: false,
             decoration: InputDecoration(
               disabledBorder: InputBorder.none,
