@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Material(
                       child: InkWell(
                         onTap: () {
@@ -88,7 +88,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Material(
                       child: InkWell(
                         child: Column(
@@ -109,7 +109,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Material(
                       child: InkWell(
                         onTap: () {
