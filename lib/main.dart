@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:test1/view/login_page.dart';
-import 'package:test1/view/main_page.dart';
-import 'package:test1/view/register_page.dart';
-import 'package:test1/view/splash_screen.dart';
+import 'package:test1/view/auth/login_page.dart';
+import 'package:test1/view/main/home_page.dart';
+import 'package:test1/view/main/main_page.dart';
+import 'package:test1/view/auth/register_page.dart';
+import 'package:test1/view/auth/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         LoginPage.route: (context) => const LoginPage(),
         RegisterPage.route: (context) => const RegisterPage(),
         MainPage.route: (context) => const MainPage(),
+        HomePage.route: (context) => const HomePage(),
         // "main_page": (context) => const MainPage(),
 
         // RegisterPage.route:(context) => const RegisterPage(),

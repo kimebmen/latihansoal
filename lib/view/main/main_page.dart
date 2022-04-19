@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test1/constant/r.dart';
 import 'package:test1/view/main/discussion/chat_page.dart';
-import 'package:test1/view/main/latihan_soal/home_page.dart';
+import 'package:test1/view/main/home_page.dart';
 import 'package:test1/view/main/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -19,6 +19,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Padding(
           padding: const EdgeInsets.only(top: 12.0),
@@ -35,7 +36,6 @@ class _MainPageState extends State<MainPage> {
           );
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _buildBottomNavigation(),
       body: PageView(
         controller: _pc,
@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
                         onTap: () {
                           index = 0;
                           _pc.animateToPage(index,
-                              duration: Duration(milliseconds: 200),
+                              duration: Duration(milliseconds: 1),
                               curve: Curves.bounceInOut);
                         },
                         child: Column(

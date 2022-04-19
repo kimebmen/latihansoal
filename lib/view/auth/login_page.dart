@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test1/constant/r.dart';
 // import 'package:test1/view/main_page.dart';
-import 'package:test1/view/register_page.dart';
+import 'package:test1/view/auth/register_page.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -12,6 +13,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // loginGoogle() {
+  //   Future<UserCredential> signInWithGoogle() async {
+  //     // Trigger the authentication flow
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  //     // Obtain the auth details from the request
+  //     final GoogleSignInAuthentication? googleAuth =
+  //         await googleUser?.authentication;
+
+  //     // Create a new credential
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth?.accessToken,
+  //       idToken: googleAuth?.idToken,
+  //     );
+
+  //     // Once signed in, return the UserCredential
+  //     return await FirebaseAuth.instance.signInWithCredential(credential);
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,8 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const RegisterPage()));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const RegisterPage()));
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
