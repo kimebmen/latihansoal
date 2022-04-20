@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:test1/constant/r.dart';
 // import 'package:test1/view/main_page.dart';
 import 'package:test1/view/auth/register_page.dart';
@@ -36,9 +37,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff3f7f8),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
               Align(
@@ -46,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   R.strings.login,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -64,11 +66,16 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 R.strings.loginDescription,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
+                style: GoogleFonts.poppins().copyWith(
                   fontWeight: FontWeight.w500,
+                  fontSize: 16,
                   color: R.colors.greySubtitle,
                 ),
+                // TextStyle(
+                //   fontSize: 14,
+                //   fontWeight: FontWeight.w500,
+                //   color: R.colors.greySubtitle,
+                // ),
               ),
               Spacer(),
               Padding(
@@ -88,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
+                    Navigator.of(context).pushNamed(RegisterPage.route);
                     // Navigator.of(context).push(MaterialPageRoute(
                     //     builder: (context) => const RegisterPage()));
                   },
@@ -100,6 +108,8 @@ class _LoginPageState extends State<LoginPage> {
                         "Masuk dengan Google",
                         style: TextStyle(
                           color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -131,6 +141,8 @@ class _LoginPageState extends State<LoginPage> {
                         "Masuk dengan Apple",
                         style: TextStyle(
                           color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
