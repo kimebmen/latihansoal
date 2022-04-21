@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:test1/constant/r.dart';
 import 'package:test1/view/auth/login_page.dart';
 import 'package:test1/view/main/latihan_soal/home_page.dart';
 import 'package:test1/view/main/latihan_soal/mapel_page.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
+        appBarTheme: AppBarTheme(
+          backgroundColor: R.colors.primary,
+        ),
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -49,7 +53,6 @@ class MyApp extends StatelessWidget {
         // "/login":(context) => const LoginPage(),
         // "login_screen":(context) => const LoginPage(),
         // SplashScreen.route: (context) => const SplashScreen(),
-        
       },
     );
   }

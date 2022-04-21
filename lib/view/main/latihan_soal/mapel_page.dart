@@ -11,13 +11,16 @@ class MapelPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Pilih Mata Pelajaran"),
       ),
-      body: ListView.builder(
-        itemBuilder: ((context, index) {
-          return GestureDetector(
-            onTap: () {},
-            child: MapelWidget(),
-          );
-        }),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+        child: ListView.builder(
+          itemBuilder: ((context, index) {
+            return GestureDetector(
+              onTap: () {},
+              child: MapelWidget(),
+            );
+          }),
+        ),
       ),
     );
   }
