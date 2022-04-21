@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test1/constant/r.dart';
 import 'package:test1/view/main/discussion/chat_page.dart';
-import 'package:test1/view/main/home_page.dart';
+import 'package:test1/view/main/latihan_soal/home_page.dart';
 import 'package:test1/view/main/profile/profile_page.dart';
 
 class MainPage extends StatefulWidget {

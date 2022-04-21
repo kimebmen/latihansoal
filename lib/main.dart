@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test1/view/auth/login_page.dart';
-import 'package:test1/view/main/home_page.dart';
+import 'package:test1/view/main/latihan_soal/home_page.dart';
+import 'package:test1/view/main/latihan_soal/mapel_page.dart';
 import 'package:test1/view/main/main_page.dart';
 import 'package:test1/view/auth/register_page.dart';
 import 'package:test1/view/auth/splash_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         RegisterPage.route: (context) => const RegisterPage(),
         MainPage.route: (context) => const MainPage(),
         HomePage.route: (context) => const HomePage(),
+        MapelPage.route: (context) => const MapelPage(),
         // "main_page": (context) => const MainPage(),
 
         // RegisterPage.route:(context) => const RegisterPage(),
