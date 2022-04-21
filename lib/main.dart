@@ -4,6 +4,7 @@ import 'package:test1/constant/r.dart';
 import 'package:test1/view/auth/login_page.dart';
 import 'package:test1/view/main/latihan_soal/home_page.dart';
 import 'package:test1/view/main/latihan_soal/mapel_page.dart';
+import 'package:test1/view/main/latihan_soal/paket_soal_page.dart';
 import 'package:test1/view/main/main_page.dart';
 import 'package:test1/view/auth/register_page.dart';
 import 'package:test1/view/auth/splash_screen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Latihan Soal',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
         appBarTheme: AppBarTheme(
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         MainPage.route: (context) => const MainPage(),
         HomePage.route: (context) => const HomePage(),
         MapelPage.route: (context) => const MapelPage(),
+        PaketSoalPage.route: (context) => const PaketSoalPage(),
         // "main_page": (context) => const MainPage(),
 
         // RegisterPage.route:(context) => const RegisterPage(),
