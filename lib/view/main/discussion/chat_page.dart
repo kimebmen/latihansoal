@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:test1/constant/r.dart';
 
 class ChatPage extends StatefulWidget {
@@ -12,9 +13,34 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final textControler = TextEditingController();
+  late CollectionReference chat;
+  late QuerySnapshot chatData;
+  // List<QueryDocumentSnapshot>? listChat;
+  // getDataFromFirebase() async {
+  //   chatData = await FirebaseFirestore.instance
+  //       .collection("room")
+  //       .doc("kimia")
+  //       .collection("chat")
+  //       .get();
+  //   // listChat = chatData.docs;
+  //   // print(chatData.docs);
+  //   setState(() {});
+  // }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // getDataFromFirebase();
+  }
+
   @override
   Widget build(BuildContext context) {
-    CollectionReference chat = FirebaseFirestore.instance.collection("room").doc("kimia").collection("chat");
+    chat = FirebaseFirestore.instance
+        .collection("room")
+        .doc("kimia")
+        .collection("chat");
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
         title: Text("Diskusi Soal"),
@@ -23,48 +49,80 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Nama User",
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Color(0xff5200ff),
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    // listChat == null
+                    //     ? CircularProgressIndicator()
+                    //     :
+                    StreamBuilder<QuerySnapshot>(
+                  stream: chat.orderBy("time").snapshots(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    }
+                    return ListView.builder(
+                      itemCount: snapshot.data!.docs.reversed.length,
+                      reverse: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        final currentChat = snapshot.data!.docs.reversed.toList()[index];
+                        final currentDate =
+                            (currentChat["time"] as Timestamp?)?.toDate();
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 10),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Column(
+                            crossAxisAlignment: user.uid == currentChat["uid"]
+                                ? CrossAxisAlignment.end
+                                : CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                currentChat["nama"],
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xff5200ff),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: user.uid == currentChat["uid"]
+                                      ? Colors.green.withOpacity(0.5)
+                                      : Color(0xffffdcdc),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: user.uid == currentChat["uid"]
+                                        ? Radius.circular(0)
+                                        : Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                    topLeft: user.uid == currentChat["uid"]
+                                        ? Radius.circular(10)
+                                        : Radius.circular(0),
+                                  ),
+                                ),
+                                child: Text(
+                                  currentChat["content"],
+                                ),
+                              ),
+                              Text(
+                                currentDate == null
+                                    ? ""
+                                    // : DateFormat.yMEd().format(currentDate),
+                                    // : DateFormat("dd-MM-yyyy HH:mm").format(currentDate),
+                                    : DateFormat("dd-MMM-yyyy HH:mm").format(currentDate),
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: R.colors.greySubtitleHome,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Color(0xffffdcdc),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
-                          ),
-                          child: Text("Pesan"),
-                        ),
-                        Text(
-                          "Waktu Kirim",
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: R.colors.greySubtitleHome,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+                        );
+                      },
+                    );
+                  },
+                )),
           ),
           SafeArea(
             child: Container(
@@ -102,7 +160,9 @@ class _ChatPageState extends State<ChatPage> {
                                       color: Colors.blue,
                                     ),
                                   ),
-                                  contentPadding: EdgeInsets.only(left: 10,),
+                                  contentPadding: EdgeInsets.only(
+                                    left: 10,
+                                  ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   hintText: "Tulis Pesan disini..",
@@ -119,20 +179,23 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   IconButton(
                     onPressed: () {
-                      if(textControler.text.isEmpty){
+                      if (textControler.text.isEmpty) {
                         return;
                       }
                       print(textControler.text);
-                      final user = FirebaseAuth.instance.currentUser!;
+
                       final chatContent = {
                         "nama": user.displayName,
                         "uid": user.uid,
                         "content": textControler.text,
                         "email": user.email,
                         "photo": user.photoURL,
+                        "file_url": "user.photoUrl",
                         "time": FieldValue.serverTimestamp(),
                       };
-                      chat.add(chatContent);
+                      chat.add(chatContent).whenComplete(() {
+                        textControler.clear();
+                      });
                     },
                     icon: Icon(
                       Icons.send,
