@@ -65,7 +65,8 @@ class _ChatPageState extends State<ChatPage> {
                       itemCount: snapshot.data!.docs.reversed.length,
                       reverse: true,
                       itemBuilder: (BuildContext context, int index) {
-                        final currentChat = snapshot.data!.docs.reversed.toList()[index];
+                        final currentChat =
+                            snapshot.data!.docs.reversed.toList()[index];
                         final currentDate =
                             (currentChat["time"] as Timestamp?)?.toDate();
                         return Container(
@@ -110,7 +111,8 @@ class _ChatPageState extends State<ChatPage> {
                                     ? ""
                                     // : DateFormat.yMEd().format(currentDate),
                                     // : DateFormat("dd-MM-yyyy HH:mm").format(currentDate),
-                                    : DateFormat("dd-MMM-yyyy HH:mm").format(currentDate),
+                                    : DateFormat("dd-MMM-yyyy HH:mm")
+                                        .format(currentDate),
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: R.colors.greySubtitleHome,

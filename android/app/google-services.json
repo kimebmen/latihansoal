@@ -14,6 +14,51 @@
       },
       "oauth_client": [
         {
+          "client_id": "130002890252-qg0jbjpoff5vpiio3asla54b52d2dbh9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test1",
+            "certificate_hash": "d7a8b7004f6d78a03694f44062b01b28eb5409a0"
+          }
+        },
+        {
+          "client_id": "130002890252-dpc22li5dooivbkmqmhimbstbp1f9ghr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC86QhpsjJybcwYuW78uhZ81RxKBgmx44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130002890252-dpc22li5dooivbkmqmhimbstbp1f9ghr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130002890252:android:36f60a85f8ee726bf18829",
+        "android_client_info": {
+          "package_name": "id.ks.latihansoal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130002890252-f6v01thvo38cuooj5gsevbvueehe050f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ks.latihansoal",
+            "certificate_hash": "d7a8b7004f6d78a03694f44062b01b28eb5409a0"
+          }
+        },
+        {
           "client_id": "130002890252-dpc22li5dooivbkmqmhimbstbp1f9ghr.apps.googleusercontent.com",
           "client_type": 3
         }

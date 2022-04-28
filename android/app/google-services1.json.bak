@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130002890252",
+    "project_id": "latihan-soal-81deb",
+    "storage_bucket": "latihan-soal-81deb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130002890252:android:53f69ab9047d9dc2f18829",
+        "android_client_info": {
+          "package_name": "com.example.test1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130002890252-dpc22li5dooivbkmqmhimbstbp1f9ghr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC86QhpsjJybcwYuW78uhZ81RxKBgmx44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130002890252-dpc22li5dooivbkmqmhimbstbp1f9ghr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
